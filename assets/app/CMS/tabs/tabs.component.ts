@@ -13,30 +13,6 @@ export class TabsComponent{
             route:"home",
         },
         {
-            label:"Bio",
-            route:"bio",
-        },
-        {
-            label:"Gigs",
-            route:"gigs",
-        },
-        {
-            label:"Media",
-            route:"media",
-        },
-        {
-            label:"Artist",
-            route:"artist",
-        },
-        {
-            label:"Collaborations",
-            route:"collab",
-        },
-        {
-            label:"Reviews",
-            route:"reviews",
-        },
-        {
             label:"Contact",
             route:"contact",
         },

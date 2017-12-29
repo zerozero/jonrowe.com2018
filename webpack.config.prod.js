@@ -1,44 +1,93 @@
+const ngToolsWebpack = require('@ngtools/webpack');
 var path = require('path');
-const AotPlugin = require('@ngtools/webpack').AotPlugin;
-const helpers = require('./helpers');
+//var CopyWebpackPlugin = require('copy-webpack-plugin');
 var webpack = require('webpack');
-var webpackMerge = require('webpack-merge');
-var commonConfig = require('./webpack.config.common.js');
 
+module.exports = {
+    resolve: {
+        extensions: ['.ts', '.js']
+    },
 
-module.exports = webpackMerge( commonConfig, {
-    devtool: 'cheap-module-eval-source-map',
-
+    entry: {
+        'app': './assets/app/main.aot.ts',
+        'vendor': './assets/app/vendor.ts',
+        'styles': './assets/app/style.scss',
+        'polyfills': './assets/app/polyfills.ts'
+    },
     output: {
         path: path.resolve(__dirname + '/public/js/app'),
         filename: '[name].bundle.js',
         publicPath: '/js/app/',
         chunkFilename: '[id].chunk.js'
     },
-    module: {
-        rules: [
-            { test: /\.ts$/, loader: '@ngtools/webpack' }
-        ]
-    },
     plugins: [
-        new AotPlugin({
+        new ngToolsWebpack.AotPlugin({
             tsConfigPath: './tsconfig.prod.json',
-            entryModule: helpers.root('assets/app/app.module#AppModule')
+            entryModule: __dirname + '/assets/app/app.module#AppModule'
         }),
-        new webpack.optimize.CommonsChunkPlugin({
-            name: ['app', 'styles']
+        //new CopyWebpackPlugin([
+        //	{from: './index.html'}
+        //]),
+        new webpack.LoaderOptionsPlugin({
+            minimize: true,
+            debug: false
         }),
         new webpack.optimize.UglifyJsPlugin({
-            beautify: false,
-            comments: false,
             compress: {
-                screw_ie8: true,
                 warnings: false
             },
-            mangle: {
-                keep_fnames: true,
-                screw_i8: true
-            }
+            output: {
+                comments: false
+            },
+            sourceMap: true
         })
-    ]
-});
+    ],
+    module: {
+        rules: [
+            {
+                test: /\.scss$/,
+                use: [{
+                    loader: "style-loader" // creates style nodes from JS strings
+                }, {
+                    loader: "css-loader" // translates CSS into CommonJS
+                }, {
+                    loader: "sass-loader" // compiles Sass to CSS
+                }]
+            },
+            {
+                test: /\.css$/,
+                use: [
+                    'to-string-loader',
+                    'css-loader'
+                ]
+            },
+            {
+                test: /\.html$/,
+                use: [{
+                    loader: 'html-loader',
+                    options: {
+                        minimize: true,
+                        removeComments: true,
+                        collapseWhitespace: true,
+
+                        // angular 2 templates break if these are omitted
+                        removeAttributeQuotes: false,
+                        keepClosingSlash: true,
+                        caseSensitive: true,
+                        conservativeCollapse: true,
+                    }
+                }],
+
+            },
+            {test: /\.ts$/, loader: '@ngtools/webpack'},
+            {
+                test: /\.(png|jpeg|jpg|gif|svg|woff|woff2|ttf|eot|ico)$/,
+                use: 'file-loader'
+            }
+        ]
+    },
+    devServer: {
+        historyApiFallback: true
+    }
+};
+
