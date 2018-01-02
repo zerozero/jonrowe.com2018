@@ -1,6 +1,6 @@
 import {Component, Inject, OnInit} from "@angular/core";
 import {Quote} from "./quote.model";
-import {MD_DIALOG_DATA, MdDialog, MdDialogRef} from "@angular/material";
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA} from "@angular/material";
 import {QuotesService} from "./quote.service";
 
 @Component({
@@ -14,7 +14,7 @@ export class HomeComponent implements OnInit{
 
     constructor(
         private quoteService: QuotesService,
-        public dialog: MdDialog) {}
+        public dialog: MatDialog) {}
 
     ngOnInit(): void {
         this._getAll();
@@ -145,8 +145,8 @@ export class EditQuoteDialog {
 
     private clonedQuote: Quote;
 
-    constructor(public dialogRef: MdDialogRef<EditQuoteDialog>,
-                @Inject(MD_DIALOG_DATA) public data: Quote) {
+    constructor(public dialogRef: MatDialogRef<EditQuoteDialog>,
+                @Inject(MAT_DIALOG_DATA) public data: Quote) {
         this.clonedQuote = data.clone();
     }
 
@@ -184,8 +184,8 @@ export class EditQuoteDialog {
     ]
 })
 export class DeleteQuoteDialog {
-    constructor(public dialogRef: MdDialogRef<DeleteQuoteDialog>,
-                @Inject(MD_DIALOG_DATA) public data: Quote) {}
+    constructor(public dialogRef: MatDialogRef<DeleteQuoteDialog>,
+                @Inject(MAT_DIALOG_DATA) public data: Quote) {}
 
     onDecline(){
         this.dialogRef.close();

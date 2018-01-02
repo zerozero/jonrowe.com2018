@@ -5,17 +5,13 @@ import { AppComponent } from './app.component';
 import {SiteModule} from "./Site/site.module";
 import {APP_ROUTING} from "./app.routing";
 import {
-    MdButtonModule, MdIconModule, MdListModule, MdMenuModule, MdSidenavModule,
-    MdToolbarModule
+    MatButtonModule, MatIconModule, MatListModule, MatMenuModule, MatSidenavModule,
+    MatToolbarModule
 } from "@angular/material";
-import {FlexLayoutModule} from "@angular/flex-layout";
+import {FlexLayoutModule, MediaService} from "@angular/flex-layout";
 import {CmsModule} from "./CMS/cms.module";
-import {GigService} from "./CMS/gigs/gig.service";
 import {HttpModule} from "@angular/http";
-import {ArtistService} from "./CMS/artists/artist.service";
-import {DynamicPageService} from "./CMS/dynamicPage/dynamic.page.service";
 import {PageNotFoundComponent} from "./pagenotfound.component";
-import {MediaService} from "./CMS/media/media.service";
 import {CommonModule} from "@angular/common";
 import {QuotesService} from "./CMS/home/quote.service";
 import {ContactService} from "./CMS/contact/contact.service";
@@ -32,10 +28,6 @@ import {ContactService} from "./CMS/contact/contact.service";
         APP_ROUTING
     ],
     providers: [
-        GigService,
-        ArtistService,
-        DynamicPageService,
-        MediaService,
         QuotesService,
         ContactService
     ],

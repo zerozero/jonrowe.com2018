@@ -6,17 +6,17 @@ import {FlexLayoutModule} from "@angular/flex-layout";
 import {
     DateAdapter,
     MD_DATE_FORMATS,
-    MdCheckboxModule,
-    MdDatepickerModule,
-    MdDialogModule,
-    MdInputModule,
-    MdListModule,
-    MdNativeDateModule,
-    MdOptionModule,
-    MdProgressBarModule,
-    MdSelectModule,
-    MdSlideToggleModule,
-    MdTabsModule,
+    MatCheckboxModule,
+    MatDatepickerModule,
+    MatDialogModule,
+    MatInputModule,
+    MatListModule,
+    MatNativeDateModule,
+    MatOptionModule,
+    MatProgressBarModule,
+    MatSelectModule,
+    MatSlideToggleModule,
+    MatTabsModule,
 } from "@angular/material";
 import {BrowserModule} from "@angular/platform-browser";
 import {Http, RequestOptions} from "@angular/http";
@@ -25,24 +25,17 @@ import {AuthGuard} from "./auth/auth-guard.service";
 import {Auth} from "./auth/auth.service";
 import {TabsComponent} from "./tabs/tabs.component";
 import {DeleteQuoteDialog, EditQuoteDialog, HomeComponent} from "./home/home.component";
-import {CmsBioComponent} from "./bio/bio.component";
-import {DeleteMediaDialog, EditMediaDialog, MediaComponent} from "./media/media.component";
-import {CmsDynamicPageComponent, DeletePageDialog, EditPageDialog} from "./dynamicPage/dynamic.page.component";
-import {EditGigDialog, DeleteGigDialog, GigsComponent} from "./gigs/gigs.component";
-import {CmsReviewsComponent} from "./reviews/reviews.component";
+
 import {ContactComponent} from "./contact/contact.component";
 import {FormsModule} from "@angular/forms";
-import {ArtistComponent, DeleteArtistDialog, EditArtistDialog} from "./artists/artist.component";
-import {ImageUploaderComponent} from "./dynamicPage/image.uploader.component";
+
+
 import {FileUploadModule} from "ng2-file-upload";
-import {TextEditorComponent} from "./dynamicPage/text.editor.component";
-import {EmbedVideoComponent} from "./dynamicPage/embed.video.component";
-import {EmbedAudioomponent} from "./dynamicPage/embed.audio.component";
 import {MyCommonModule} from "../common.module";
-import {MediaFilterPipe} from "./media/media.filter";
+
 import {CommonModule} from "@angular/common";
-import {TruncateFilterPipe} from "./media/truncate.filter";
-import {CmsCollabComponent} from "./collab/collab.component";
+
+
 
 export function authHttpServiceFactory(http: Http, options: RequestOptions) {
     return new AuthHttp( new AuthConfig({}), http, options);
@@ -64,17 +57,17 @@ const MY_DATE_FORMATS = {
         MyCommonModule,
         FormsModule,
         FileUploadModule,
-        MdTabsModule,
-        MdListModule,
-        MdDialogModule,
-        MdInputModule,
-        MdDatepickerModule,
-        MdNativeDateModule,
-        MdCheckboxModule,
-        MdSlideToggleModule,
-        MdOptionModule,
-        MdSelectModule,
-        MdProgressBarModule,
+        MatTabsModule,
+        MatListModule,
+        MatDialogModule,
+        MatInputModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
+        MatCheckboxModule,
+        MatSlideToggleModule,
+        MatOptionModule,
+        MatSelectModule,
+        MatProgressBarModule,
         CMS_ROUTING
     ],
     declarations: [
@@ -82,28 +75,7 @@ const MY_DATE_FORMATS = {
         AuthComponent,
         TabsComponent,
         HomeComponent,
-        CmsBioComponent,
-        CmsCollabComponent,
-        MediaComponent,
-        CmsDynamicPageComponent,
-        ArtistComponent,
-        GigsComponent,
-        CmsReviewsComponent,
         ContactComponent,
-        ImageUploaderComponent,
-        TextEditorComponent,
-        EmbedVideoComponent,
-        EmbedAudioomponent,
-        DeleteGigDialog,
-        EditGigDialog,
-        EditArtistDialog,
-        DeleteArtistDialog,
-        EditPageDialog,
-        DeletePageDialog,
-        EditMediaDialog,
-        DeleteMediaDialog,
-        MediaFilterPipe,
-        TruncateFilterPipe,
         EditQuoteDialog,
         DeleteQuoteDialog
     ],
@@ -117,14 +89,6 @@ const MY_DATE_FORMATS = {
         }
     ],
     entryComponents: [
-        DeleteGigDialog,
-        EditGigDialog,
-        EditArtistDialog,
-        DeleteArtistDialog,
-        EditPageDialog,
-        DeletePageDialog,
-        EditMediaDialog,
-        DeleteMediaDialog,
         EditQuoteDialog,
         DeleteQuoteDialog
     ]

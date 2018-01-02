@@ -1,44 +1,39 @@
-<md-sidenav-container>
+<mat-sidenav-container>
 
-    <md-sidenav #sidenav mode="push" class="sidenav-menu">
+    <mat-sidenav #sidenav mode="push" class="sidenav-menu">
         <!-- sidenav content -->
         <div fxLayout="column" fxLayoutAlign="start start" fxLayoutGap.lt-md="0px" fxLayoutGap="12px" class="menu-layout-container">
 
-            <button fxFlex="0 1 auto" md-button (click)="navigateToRoute('home'); sidenav.close()">HOME</button>
-            <button fxFlex="0 1 auto" md-button (click)="navigateToRoute('bio'); sidenav.close()">BIO</button>
-            <button fxFlex="0 1 auto" md-button (click)="navigateToRoute('gigs'); sidenav.close()">GIGS</button>
-            <button fxFlex="0 1 auto" md-button [mdMenuTriggerFor]="mediaMenu">MEDIA</button>
-            <button fxFlex="0 1 auto" md-button [mdMenuTriggerFor]="collabMenu">COLLABORATIONS</button>
-            <button fxFlex="0 1 auto" md-button (click)="navigateToRoute('reviews'); sidenav.close()">REVIEWS</button>
-            <button fxFlex="0 1 auto" md-button (click)="navigateToRoute('contact'); sidenav.close()">CONTACT</button>
+            <button fxFlex="0 1 auto" mat-button (click)="navigateToRoute('home'); sidenav.close()">HOME</button>
+            <button fxFlex="0 1 auto" mat-button (click)="navigateToRoute('contact'); sidenav.close()">CONTACT</button>
         </div>
-    </md-sidenav>
+    </mat-sidenav>
 
     <router-outlet></router-outlet>
 
-</md-sidenav-container>
+</mat-sidenav-container>
 
-<md-toolbar color="accent" >
+<mat-toolbar color="accent" >
     <span class="example-spacer"></span>
 
 
-    <md-menu #collabMenu="mdMenu"
+    <mat-menu #collabMenu="matMenu"
              class="flat-menu-panel"
              [class]="classes"
              [overlapTrigger]="false">
-        <button md-menu-item class="body-font" *ngFor="let collab of collabs" (click)="showCollaboration(collab)">{{getArtist(collab.artist_id) | uppercase}}</button>
-    </md-menu>
+        <button mat-menu-item class="body-font" *ngFor="let collab of collabs" (click)="showCollaboration(collab)">{{getArtist(collab.artist_id) | uppercase}}</button>
+    </mat-menu>
 
-    <md-menu #mediaMenu="mdMenu"
+    <mat-menu #mediaMenu="matMenu"
              class="flat-menu-panel"
              [class]="classes"
              [overlapTrigger]="false">
-        <button md-menu-item class="body-font" (click)="showMedia(typeAudio)">AUDIO</button>
-        <button md-menu-item class="body-font" (click)="showMedia(typeVideo)">VIDEO</button>
-    </md-menu>
+        <button mat-menu-item class="body-font" (click)="showMedia(typeAudio)">AUDIO</button>
+        <button mat-menu-item class="body-font" (click)="showMedia(typeVideo)">VIDEO</button>
+    </mat-menu>
 
     <button fxFlex="0 1 auto"
-            md-icon-button
+            mat-icon-button
             fxHide="false"
             fxHide.gt-sm="true"
             (click)="sidenav.open()"
@@ -51,45 +46,17 @@
          fxHide.gt-sm="false">
 
         <a fxFlex="auto"
-           md-button
+           mat-button
            routerLinkActive="active"
            [routerLink]="['/home']"
            class="body-font">HOME</a>
         <span class="body-font separator">/</span>
+
         <a fxFlex="auto"
-           md-button
-           routerLinkActive="active"
-           [routerLink]="['/bio']"
-           class="body-font">BIO</a>
-        <span class="body-font separator">/</span>
-        <a fxFlex="auto"
-           md-button
-           routerLinkActive="active"
-           [routerLink]="['/gigs']"
-           class="body-font">GIGS</a>
-        <span class="body-font separator">/</span>
-        <a fxFlex="auto"
-           md-button
-           routerLinkActive="active"
-           [mdMenuTriggerFor]="mediaMenu"
-           class="body-font">MEDIA</a>
-        <span class="body-font separator">/</span>
-        <a fxFlex="auto"
-           md-button
-           [mdMenuTriggerFor]="collabMenu"
-           class="body-font">COLLABORATIONS</a>
-        <span class="body-font separator">/</span>
-        <a fxFlex="auto"
-           md-button
-           routerLinkActive="active"
-           [routerLink]="['/reviews']"
-           class="body-font">REVIEWS</a>
-        <span class="body-font separator">/</span>
-        <a fxFlex="auto"
-           md-button
+           mat-button
            routerLinkActive="active"
            [routerLink]="['/contact']"
            class="body-font">CONTACT</a>
     </div>
-</md-toolbar>
+</mat-toolbar>
 
