@@ -16,22 +16,6 @@
 <mat-toolbar color="accent" >
     <span class="example-spacer"></span>
 
-
-    <mat-menu #collabMenu="matMenu"
-             class="flat-menu-panel"
-             [class]="classes"
-             [overlapTrigger]="false">
-        <button mat-menu-item class="body-font" *ngFor="let collab of collabs" (click)="showCollaboration(collab)">{{getArtist(collab.artist_id) | uppercase}}</button>
-    </mat-menu>
-
-    <mat-menu #mediaMenu="matMenu"
-             class="flat-menu-panel"
-             [class]="classes"
-             [overlapTrigger]="false">
-        <button mat-menu-item class="body-font" (click)="showMedia(typeAudio)">AUDIO</button>
-        <button mat-menu-item class="body-font" (click)="showMedia(typeVideo)">VIDEO</button>
-    </mat-menu>
-
     <button fxFlex="0 1 auto"
             mat-icon-button
             fxHide="false"
